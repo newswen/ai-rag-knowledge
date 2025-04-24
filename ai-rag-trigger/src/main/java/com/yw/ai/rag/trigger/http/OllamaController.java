@@ -7,6 +7,7 @@ import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
@@ -27,14 +28,15 @@ public class OllamaController implements IAiService {
 
     /**
      * 非流式文本问答
+     *
      * @param model
      * @param message
      * @return
      */
     @Override
     @GetMapping("/generate")
-    public ChatResponse generateText(@RequestParam(value = "model")String model,@RequestParam(value = "message") String message) {
-        return  chatClient.call(new Prompt(
+    public ChatResponse generateText(@RequestParam(value = "model") String model, @RequestParam(value = "message") String message) {
+        return chatClient.call(new Prompt(
                 message,
                 OllamaOptions.create()
                         .withModel(model)
@@ -43,6 +45,7 @@ public class OllamaController implements IAiService {
 
     /**
      * 流式文本问答
+     *
      * @param model
      * @param message
      * @return

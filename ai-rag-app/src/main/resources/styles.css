@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fb;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh;
+    padding: 20px;
+}
+
+.chat-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.chat-header {
+    padding: 15px 20px;
+    background-color: #4a6cf7;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 24px;
+}
+
+.logo h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.model-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.model-selector select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.model-selector select option {
+    background-color: white;
+    color: #333;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.assistant, .message.system {
+    justify-content: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.message.user .message-content {
+    background-color: #4a6cf7;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message.assistant .message-content {
+    background-color: #f0f2f5;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.message.system .message-content {
+    background-color: #f8f9fa;
+    color: #666;
+    border: 1px solid #e1e4e8;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-input-container {
+    padding: 15px 20px;
+    display: flex;
+    gap: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e1e4e8;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 24px;
+    border: 1px solid #ddd;
+    outline: none;
+    resize: none;
+    font-size: 15px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.send-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.send-button:hover {
+    background-color: #3a5ce5;
+}
+
+.send-button i {
+    font-size: 18px;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 8px 0;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa;
+    border-radius: 50%;
+    display: inline-block;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.6;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        height: 100vh;
+    }
+
+    .chat-container {
+        border-radius: 0;
+    }
+
+    .chat-header {
+        border-radius: 0;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .message-content {
+        max-width: 90%;
+    }
+}
